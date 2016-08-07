@@ -37,43 +37,36 @@ public class DetailActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            switch (item.getItemId()){
-
-                case R.id.action_settings:
-                    Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                    startActivity(settingsIntent);
-                    return true;
-                default:
-                    return true;
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+               return super.onOptionsItemSelected(item);
             }
-
-        return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
+        /**
+         * A placeholder fragment containing a simple view.
+         */
+        public static class PlaceholderFragment extends Fragment {
 
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-
-            Intent intent = getActivity().getIntent();
-            View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-            if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
-                TextView detailView = (TextView) rootView.findViewById(R.id.detail_text);
-                String forecast = intent.getStringExtra(Intent.EXTRA_TEXT);
-                detailView.setText(forecast);
+            public PlaceholderFragment() {
             }
-            return rootView;
+
+            @Override
+            public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                     Bundle savedInstanceState) {
+
+                Intent intent = getActivity().getIntent();
+                View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+                if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
+                    TextView detailView = (TextView) rootView.findViewById(R.id.detail_text);
+                    String forecast = intent.getStringExtra(Intent.EXTRA_TEXT);
+                    detailView.setText(forecast);
+                }
+                return rootView;
+            }
         }
     }
-}
