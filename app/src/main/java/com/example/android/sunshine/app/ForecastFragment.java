@@ -107,13 +107,13 @@ public class ForecastFragment extends Fragment {
         String location = prefs.getString(getString(R.string.pref_location_key),
                 getString(R.string.pref_location_default));
         weatherTask.execute(location);
-    }
+        }
 
     @Override
     public void onStart() {
         super.onStart();
         updateWeather();
-    }
+        }
 
     public class FetchWeatherTask extends AsyncTask<String, Void, String[]>{
 
