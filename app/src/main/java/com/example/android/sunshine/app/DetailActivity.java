@@ -41,7 +41,7 @@ public class DetailActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
 
                 case R.id.action_settings:
                     Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
@@ -51,29 +51,30 @@ public class DetailActivity extends ActionBarActivity {
                     return true;
             }
 
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
+            return super.onOptionsItemSelected(item);
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        /**
+         * A placeholder fragment containing a simple view.
+         */
+        public static class PlaceholderFragment extends Fragment {
 
-            Intent intent = getActivity().getIntent();
-            View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-            if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
-                TextView detailView = (TextView) rootView.findViewById(R.id.detail_text);
-                String forecast = intent.getStringExtra(Intent.EXTRA_TEXT);
-                detailView.setText(forecast);
+            public PlaceholderFragment() {
             }
-            return rootView;
+
+            @Override
+            public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                     Bundle savedInstanceState) {
+
+                Intent intent = getActivity().getIntent();
+                View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+                if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
+                    TextView detailView = (TextView) rootView.findViewById(R.id.detail_text);
+                    String forecast = intent.getStringExtra(Intent.EXTRA_TEXT);
+                    detailView.setText(forecast);
+                }
+                return rootView;
+            }
         }
     }
 }
