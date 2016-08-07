@@ -63,11 +63,7 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_refresh:
-                FetchWeatherTask weatherTask = new FetchWeatherTask();
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                String location = prefs.getString(getString(R.string.pref_location_key),
-                                        getString(R.string.pref_location_default));
-                weatherTask.execute(location);
+                updateWeather();
                 return true;
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(getActivity(), SettingsActivity.class);
@@ -106,7 +102,11 @@ public class ForecastFragment extends Fragment {
         return rootView;
     }
     private void updateWeather() {
-       updateWeather();
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString(getString(R.string.pref_location_key),
+                getString(R.string.pref_location_default));
+        weatherTask.execute(location);
         }
 
     @Override
